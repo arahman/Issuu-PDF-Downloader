@@ -1,13 +1,10 @@
 import urllib
 import requests
-import core.pdf as pdf
-
 
 def exists(path):
     # Check that image exists
     r = requests.head(path)
     return r.status_code == requests.codes.ok
-
 
 def downloader(url):
     print('Started download process...')

@@ -1,10 +1,9 @@
 import re
 import urllib
-
+import os
 
 def main():
     import core.downloader as downloader
-    import core.pdf as pdf
 
     print("Starting...\n")
     url = input("Enter the url of the PDF:")
@@ -37,7 +36,17 @@ def main():
         httpurl = m.group(1)
         print('Starting from URI: ' + httpurl)
         filelist = downloader.downloader(httpurl)
-        pdf.creator(filelist)
+        print('Started pdf creation...')
+        filename = list(filter(None, url.split('/'))).pop()
+        command = 'convert ' + " ".join(filelist) + ' ' + filename + '.pdf'
+        print('running: ' + command)
+        os.system(command)
+        print('Completed pdf creation...')
+
+        for f in filelist:
+            fname = f.rstrip() # or depending on situation: f.rstrip('\n')
+            if os.path.isfile(fname):
+                os.remove(fname)
     else:
         print("Error! No image was found")
 

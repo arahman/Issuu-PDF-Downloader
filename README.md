@@ -1,23 +1,15 @@
 # Issuu-PDF-Downloader
 
-### IMPORTANT: dependency package *pyfpdf* has obsolete version from pip or conda. Please install from its [project GitHub page](https://github.com/reingart/pyfpdf).
+Fork of [JPYamamoto/Issuu-PDF-Downloader](https://github.com/JPYamamoto/Issuu-PDF-Downloader) but modified to use ImageMagick for making the PDF.
 
-Program on python which downloads Issuu files as PDF
+## setup
+```
+python3 -m venv issuu_env
+source issuu_env/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+Also, install ImageMagick
 
-Issuu is a platform which allows users to upload PDF's and protect them from downloading (they didn't count with me)
-
-However, while doing research on the source code, I was able to find its weakness. It stores each page of the PDF as a .jpg in a certain location, and labels it as page_1 <-- number of the page.
-
-So, with this little code in python you're able to take advantage of this weakness and download any file you wish.
-
-
-
-You have to run the file framework.py and paste the url of the file you want to download, that's it.
-
-It will give you the images as well as a PDF.
-
-You can change the image size in the resize.py file.
-
-In order to change the size of the page of the PDF, you must modify the pdf.py file.
-
-Testing that this works
+## run
+`python framework.py`
